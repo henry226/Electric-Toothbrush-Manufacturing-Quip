@@ -58,6 +58,7 @@ public class Salary implements HumanResource{
 	// show salary information
 	@Override
 	public void showInfo() {
-		System.out.println("Inside salary class");
+		System.out.printf("Name: %s %s%nSocial security number: %s%nSalary: %d%n", getFirstName(), getLastName(), 
+				getSocialSecurityNumber(), getSalary());
 	}
 }
