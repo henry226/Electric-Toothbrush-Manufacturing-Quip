@@ -70,7 +70,7 @@ public class Employee implements HumanResource{
 	// show employee information
 	@Override
 	public void showInfo() {
-		System.out.printf("Name: %s %s%nTitle: %s%nSocial security number: %s%nPhone Number: %s", getFirstName(), getLastName(), 
+		System.out.printf("Name: %s %s%nTitle: %s%nSocial security number: %s%nPhone Number: %s%n", getFirstName(), getLastName(), 
 				getTitle(), getSocialSecurityNumber(), getPhoneNumber());
 	}
 }

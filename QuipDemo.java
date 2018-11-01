@@ -23,13 +23,15 @@ public class QuipDemo {
 				employee1.showInfo();
 				
 				// create department objec
-				/*HumanResource employee1Dept = hrFactory.getInfo("DEPARTMENT"); 
-				employee1Dept.showInfo();*/
+				HumanResource employee1Dept = hrFactory.getInfo("DEPARTMENT", "MengTse", "Li", "111-11-1111", "617-617-6617", "Software Manager",
+						100000, "Computer Science"); 
+				employee1Dept.showInfo();
 				
 				// create salary object
-				/*HumanResource employee1Salary = hrFactory.getInfo("SALARY"); 
+				HumanResource employee1Salary = hrFactory.getInfo("SALARY", "MengTse", "Li", "111-11-1111", "617-617-6617", "Software Manager",
+						100000, "Computer Science"); 
 				employee1Salary.showInfo();
-				*/
+				
 			}
 		}
 	}

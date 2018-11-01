@@ -58,6 +58,6 @@ public class Department implements HumanResource{
 	// show department information
 	@Override
 	public void showInfo() {
-		System.out.println("Inside department class");
+		System.out.printf("Name: %s %s%nDepartment: %s%nTitle: %s%n", getFirstName(), getLastName(), getDepartment(), getTitle());
 	}
 }
