@@ -1,4 +1,4 @@
-package Assigment3;
+package NewAssignment3;
 
 // Employee class implements HumanResource
 public class Employee implements HumanResource{

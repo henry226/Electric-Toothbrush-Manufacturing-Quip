@@ -1,4 +1,4 @@
-package Assigment3;
+package NewAssignment3;
 
 public class HumanResourceFactory {
 	

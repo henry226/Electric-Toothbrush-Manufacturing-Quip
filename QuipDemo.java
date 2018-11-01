@@ -1,4 +1,4 @@
-package Assigment3;
+package NewAssignment3;
 
 import java.util.Scanner;
 
@@ -56,15 +56,15 @@ public class QuipDemo {
 				System.out.println("===============================");
 				HumanResourceFactory hrFactory = new HumanResourceFactory();
 				if(hrOption.equals("a")) {
-					System.out.println("Employee Information");
+					System.out.println("Employee Information\n");
 					Employee(hrFactory, userType);
 				}
 				else if(hrOption.equals("b")) {
-					System.out.println("Department Information");
+					System.out.println("Department Information\n");
 					Department(hrFactory, userType);
 				}
 				else if(hrOption.equals("c")){
-					System.out.println("Salary Information");
+					System.out.println("Salary Information\n");
 					Salary(hrFactory, userType);
 				}
 				else 
@@ -82,24 +82,63 @@ public class QuipDemo {
 	// The employee method
 	public static void Employee(HumanResourceFactory hrFactory, String userType) {
 		// create employee object
-		HumanResource employee1 = hrFactory.getInfo("EMPLOYEE", "MengTse", "Li", "111-11-1111", "617-617-6617", "Software Manager",
-				100000, "Computer Science");	
-		employee1.showInfo();
+		if(userType.equals("admin")) {
+			HumanResource employee1 = hrFactory.getInfo("EMPLOYEE", "MengTse", "Li", "111-11-1111", "617-617-6617", "Software Manager",
+					100000, "Computer Science");	
+			employee1.showInfo();
+			
+			System.out.println();
+			
+			HumanResource employee2 = hrFactory.getInfo("EMPLOYEE", "Yeng", "Sun", "222-22-2222", "618-618-618", "Software Developer",
+					80000, "Computer Information System");	
+			employee2.showInfo();
+		}
+		else {
+			HumanResource employee2 = hrFactory.getInfo("EMPLOYEE", "Yeng", "Sun", "222-22-2222", "618-618-618", "Software Developer",
+					80000, "Computer Information System");	
+			employee2.showInfo();
+		}
 	}
 	
 	// The employee method
 	public static void Department(HumanResourceFactory hrFactory, String userType) {
 		// create department objec
-				HumanResource employee1Dept = hrFactory.getInfo("DEPARTMENT", "MengTse", "Li", "111-11-1111", "617-617-6617", "Software Manager",
-						100000, "Computer Science"); 
-				employee1Dept.showInfo();
+		if(userType.equals("admin")) {
+			HumanResource employee1 = hrFactory.getInfo("DEPARTMENT", "MengTse", "Li", "111-11-1111", "617-617-6617", "Software Manager",
+					100000, "Computer Science");	
+			employee1.showInfo();
+			
+			System.out.println();
+			
+			HumanResource employee2 = hrFactory.getInfo("DEPARTMENT", "Yeng", "Sun", "222-22-2222", "618-618-618", "Software Developer",
+					80000, "Computer Information System");	
+			employee2.showInfo();
+		}
+		else {
+			HumanResource employee2 = hrFactory.getInfo("DEPARTMENT", "Yeng", "Sun", "222-22-2222", "618-618-618", "Software Developer",
+					80000, "Computer Information System");	
+			employee2.showInfo();
+		}
 	}
 	
 	// The employee method
 	public static void Salary(HumanResourceFactory hrFactory, String userType) {
 		// create salary object
-		HumanResource employee1Salary = hrFactory.getInfo("SALARY", "MengTse", "Li", "111-11-1111", "617-617-6617", "Software Manager",
-				100000, "Computer Science"); 
-		employee1Salary.showInfo();
+		if(userType.equals("admin")) {
+			HumanResource employee1 = hrFactory.getInfo("DEPARTMENT", "MengTse", "Li", "111-11-1111", "617-617-6617", "Software Manager",
+					100000, "Computer Science");	
+			employee1.showInfo();
+			
+			System.out.println();
+			
+			HumanResource employee2 = hrFactory.getInfo("DEPARTMENT", "Yeng", "Sun", "222-22-2222", "618-618-618", "Software Developer",
+					80000, "Computer Information System");	
+			employee2.showInfo();
+		}
+		else {
+			HumanResource employee2 = hrFactory.getInfo("DEPARTMENT", "Yeng", "Sun", "222-22-2222", "618-618-618", "Software Developer",
+					80000, "Computer Information System");	
+			employee2.showInfo();
+		}
 	}
 }
