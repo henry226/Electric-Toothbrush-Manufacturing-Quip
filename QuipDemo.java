@@ -21,10 +21,10 @@ public class QuipDemo {
 				employee.showInfo();
 				// create department object
 				HumanResource department = hrFactory.getInfo("DEPARTMENT");
-				employee.showInfo();
+				department.showInfo();
 				// create salary object
 				HumanResource salary = hrFactory.getInfo("SALARY");
-				employee.showInfo();
+				salary.showInfo();
 			}
 		}
 	}
