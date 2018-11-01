@@ -3,7 +3,7 @@ package Assigment3;
 public class HumanResourceFactory {
 	
 	// use getInfo method to get object of type HumnanResource
-	public HumanResource getInfo(String type, String firstName, String lastName, String socialSecurityNumber, int phoneNumber, String title,
+	public HumanResource getInfo(String type, String firstName, String lastName, String socialSecurityNumber, String phoneNumber, String title,
 			int salary, String department) {
 		// return objects depends on type
 		if(type.equalsIgnoreCase("EMPLOYEE")) {

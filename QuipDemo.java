@@ -16,15 +16,20 @@ public class QuipDemo {
 			option = scan.nextInt(); // sacn the input
 			if(option == 1) {
 				HumanResourceFactory hrFactory = new HumanResourceFactory();
-				// create employee object
-				HumanResource employee = hrFactory.getInfo("EMPLOYEE");
-				employee.showInfo();
-				// create department object
-				HumanResource department = hrFactory.getInfo("DEPARTMENT");
-				department.showInfo();
+				// String type, String firstName, String lastName, String socialSecurityNumber, int phoneNumber, 
+				// String title, int salary, String department
+				HumanResource employee1 = hrFactory.getInfo("EMPLOYEE", "MengTse", "Li", "111-11-1111", "617-617-6617", "Software Manager",
+						100000, "Computer Science");	// create employee object
+				employee1.showInfo();
+				
+				// create department objec
+				/*HumanResource employee1Dept = hrFactory.getInfo("DEPARTMENT"); 
+				employee1Dept.showInfo();*/
+				
 				// create salary object
-				HumanResource salary = hrFactory.getInfo("SALARY");
-				salary.showInfo();
+				/*HumanResource employee1Salary = hrFactory.getInfo("SALARY"); 
+				employee1Salary.showInfo();
+				*/
 			}
 		}
 	}

@@ -5,11 +5,11 @@ public class Employee implements HumanResource{
 	private String firstName;
 	private String lastName;
 	private String socialSecurityNumber;
-	private int phoneNumber;
+	private String phoneNumber;
 	private String title;
 	
 	// constructor
-	public Employee(String firstName, String lastName, String socialSecurityNumber, int phoneNumber, String title) {
+	public Employee(String firstName, String lastName, String socialSecurityNumber, String phoneNumber, String title) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.socialSecurityNumber = socialSecurityNumber;
@@ -48,12 +48,12 @@ public class Employee implements HumanResource{
 	}
 	
 	// return phone number
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
 	// set last phone number
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 	
@@ -70,6 +70,7 @@ public class Employee implements HumanResource{
 	// show employee information
 	@Override
 	public void showInfo() {
-		System.out.println("Inside employee class");
+		System.out.printf("Name: %s %s%nTitle: %s%nSocial security number: %s%nPhone Number: %s", getFirstName(), getLastName(), 
+				getTitle(), getSocialSecurityNumber(), getPhoneNumber());
 	}
 }
