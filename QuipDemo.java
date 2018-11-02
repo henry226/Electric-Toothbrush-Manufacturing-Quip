@@ -7,74 +7,90 @@ public class QuipDemo {
 	public static void main(String[] args) {
 		
 		System.out.println("Hello and welcome to Quip!");
-		Scanner scan = new Scanner(System.in); // create scanner object
-		
-		// Ask for username and password
-		System.out.println("Enter Username:");
-		String username = scan.nextLine();
-		System.out.println("Enter Password:");
-		String password = scan.nextLine();
-		
-		String userType;
-		boolean validates;
-		
-		/*
-		 * In this test case, there are 2 users in the system.
-		 * Super user -> username: admin & password: 1234
-		 * Normal user -> username: user & password: 4321
-		 */
-		if(username.equals("admin") && password.equals("1234")) {
-			System.out.println("Welcome admin. You can view all datas.");
-			userType = "admin";
-			validates = true;
-		}
-		else if(username.equals("user") && password.equals("4321")) {
-			System.out.println("Welcome user. You can only view your data.");
-			userType = "user";
-			validates = true;
-		}
-		else {
-			System.out.println("Sorry, error username or password! Please try again."); 
-			userType = null;
-			validates = false;
-		}
 		
 		// initiate option with value 
-		int option = 9; 
-		while (option != 0 && validates == true) {
-			// show options to user, input 0 then exit
-			System.out.println("\nPlease Enter your option:\n1 -> HR System\n2 -> Account System\n0 -> Exit");
-			option = scan.nextInt(); // sacn the input
+		String option = ""; 
+		String password = "";
+		String username ="";
+		boolean validates = false;
+		while (!option.equals("0")) {
+			Scanner scan = new Scanner(System.in); // create scanner object
 			
-			if(option == 1) {
-				// user to choose options
-				System.out.println("Please enter your option:\na. View Employee Information\nb. View Department Information\nc. View Salary Intormation");
-				
-				Scanner scan2 = new Scanner(System.in);
-				String hrOption = scan2.nextLine();
-				
+			if(validates == false) {
+				// Ask for username and password
+				System.out.println("Enter Username:");
+				username = scan.nextLine();
+				System.out.println("Enter Password:");
+				password = scan.nextLine();
+			}
+			
+			String userType;
+			
+			 /*
+			 * In this test case, there are 2 users in the system.
+			 * Super user -> username: admin & password: 1234
+			 * Normal user -> username: user & password: 4321
+			 */
+			if(username.equals("admin") && password.equals("1234")) {
+				System.out.println("Welcome admin. You can view all datas.");
+				userType = "admin";
+				validates = true;
+			}
+			else if(username.equals("user") && password.equals("4321")) {
+				System.out.println("Welcome user. You can only view your data.");
+				userType = "user";
+				validates = true;
+			}
+			else {
+				userType = null;
+				validates = false;
+			}
+
+			HumanResourceFactory hrFactory = new HumanResourceFactory();
+			// user to choose options
+			System.out.println("Please enter your option:\n1 -> Employee Information\n2 -> Department Information\n3 -> Salary Intormation\n4 -> "
+					+ "User Account\n5 -> Log out\n0 -> Exit");
+			
+			Scanner scan2 = new Scanner(System.in);
+			option = scan2.nextLine();
+			
+			if(validates == true) {
 				System.out.println("===============================");
-				HumanResourceFactory hrFactory = new HumanResourceFactory();
-				if(hrOption.equals("a")) {
+				if(option.equals("1")) {
 					System.out.println("Employee Information\n");
 					Employee(hrFactory, userType);
 				}
-				else if(hrOption.equals("b")) {
+				else if(option.equals("2")) {
 					System.out.println("Department Information\n");
 					Department(hrFactory, userType);
 				}
-				else if(hrOption.equals("c")){
+				else if(option.equals("3")){
 					System.out.println("Salary Information\n");
 					Salary(hrFactory, userType);
 				}
+				else if(option.equals("4")) {
+					System.out.println("Account Status\n");
+					
+					AccountSingleton originalAccount = AccountSingleton.getInstance();
+					System.out.println("The initial account status:\nPayable? " 
+							+ originalAccount.payable + "\nReceivable? " + originalAccount.receivable);
+					Account(userType);
+				}
+				else if(option.equals("5")) {
+					username = "";
+					password = "";
+					validates = false;
+					System.out.println("Log out successfully");
+				}
+				// Exit program
+				else if(option.equals("0")) {
+					System.out.println("Bye!");
+				}
 				else 
 					System.out.println("Invalid input.");
-				
-				System.out.println("===============================");
 			}
-			else if(option == 0) {
-				System.out.println("Bye!");
-			}
+			System.out.println("===============================\n");
+			
 		}
 	}
 	
@@ -100,7 +116,7 @@ public class QuipDemo {
 		}
 	}
 	
-	// The employee method
+	// The department method
 	public static void Department(HumanResourceFactory hrFactory, String userType) {
 		// create department objec
 		if(userType.equals("admin")) {
@@ -121,7 +137,7 @@ public class QuipDemo {
 		}
 	}
 	
-	// The employee method
+	// The Salary method
 	public static void Salary(HumanResourceFactory hrFactory, String userType) {
 		// create salary object
 		if(userType.equals("admin")) {
@@ -139,6 +155,43 @@ public class QuipDemo {
 			HumanResource employee2 = hrFactory.getInfo("DEPARTMENT", "Yeng", "Sun", "222-22-2222", "618-618-618", "Software Developer",
 					80000, "Computer Information System");	
 			employee2.showInfo();
+		}
+	}
+	
+	// The account method
+	public static void Account(String userType) {
+		Scanner scan3 = new Scanner(System.in); // create scanner object
+		
+		if(userType.equals("admin")) {
+			System.out.println("\nChange Status? (Y/N)");
+			String choice = scan3.nextLine();
+			AccountSingleton adminAccount = AccountSingleton.getInstance();
+			
+			// if admin want to change status, admin has the authority to change everything
+			if(choice.equalsIgnoreCase("Y")) {
+				// Change everything to Yes
+				adminAccount.payable = "YES";
+				adminAccount.receivable = "YES";
+				
+				System.out.println("\nModified account status:\nPayable? " + adminAccount.payable + "\nReceivable? " + adminAccount.receivable);
+			}
+			else 
+				System.out.println("\nAccount status:\nPayable? " + adminAccount.payable + "\nReceivable? " + adminAccount.receivable);
+		}
+		else if(userType.equals("user")) {
+			System.out.println("\nChange Status? (Y/N)");
+			String choice = scan3.nextLine();
+			AccountSingleton userAccount = AccountSingleton.getInstance();
+			
+			// if admin want to change status, admin has the authority to change everything
+			if(choice.equalsIgnoreCase("Y")) {
+				// Can only change Receivable
+				userAccount.receivable = "YES";
+				
+				System.out.println("\nModified account status:\nPayable? " + userAccount.payable + "\nReceivable? " + userAccount.receivable);
+			}
+			else 
+				System.out.println("\nAccount status:\nPayable? " + userAccount.payable + "\nReceivable? " + userAccount.receivable);
 		}
 	}
 }
