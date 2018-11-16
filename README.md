@@ -1,2 +1,2 @@
 # Random-Color-Legos
-![picture alt]( ClassDiagram.png "Title is optional")
+![picture alt]( Class_Diagram.png "Title is optional")
